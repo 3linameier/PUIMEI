@@ -5,216 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontakt — PUIMEI Mööbel</title>
 <meta name="description" content="Võta PUIMEI mööbliga ühendust e-posti või sotsiaalmeedia teel.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ivory: #EDEAE0;
-    --ivory-deep: #E1DBC7;
-    --paper: #F8F5ED;
-    --wood-light: #C9A275;
-    --wood: #8C5F3B;
-    --wood-dark: #4E3220;
-    --green: #56704F;
-    --green-deep: #2E3D2E;
-    --clay: #B15A34;
-    --ink: #2A2116;
-    --ink-soft: #675A48;
-    --line: #D3C7A6;
-    --shadow-col: #4E3220;
-    color-scheme: light;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ivory: #201A13;
-      --ivory-deep: #292116;
-      --paper: #251E15;
-      --wood-light: #C9A275;
-      --wood: #D8AE7E;
-      --wood-dark: #EFDCC0;
-      --green: #8CA786;
-      --green-deep: #A9C7A2;
-      --clay: #DE8B5C;
-      --ink: #F1EADA;
-      --ink-soft: #C3B69C;
-      --line: #4A3D2A;
-      --shadow-col: #C9A275;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --ivory: #201A13;
-    --ivory-deep: #292116;
-    --paper: #251E15;
-    --wood-light: #C9A275;
-    --wood: #D8AE7E;
-    --wood-dark: #EFDCC0;
-    --green: #8CA786;
-    --green-deep: #A9C7A2;
-    --clay: #DE8B5C;
-    --ink: #F1EADA;
-    --ink-soft: #C3B69C;
-    --line: #4A3D2A;
-    --shadow-col: #C9A275;
-    color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  }
-
-  body { margin: 0; background: var(--ivory); color: var(--ink); font-family: "Nunito", system-ui, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; margin: 0; text-wrap: balance; color: var(--wood-dark); }
-  a { color: inherit; }
-  img, svg { display: block; max-width: 100%; }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
-
-  header.site { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 2px solid var(--ink); }
-  .nav-bar { max-width: 1180px; margin: 0 auto; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
-  .wordmark { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.01em; color: var(--wood-dark); text-decoration: none; display: flex; align-items: baseline; gap: 8px; }
-  .wordmark small { font-family: "Nunito", sans-serif; font-weight: 700; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-deep); }
-  nav.links { display: flex; gap: 6px; align-items: center; }
-  nav.links a { text-decoration: none; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.02em; color: var(--ink-soft); padding: 10px 16px; border: 2px solid transparent; transition: border-color 0.15s, color 0.15s, background 0.15s; }
-  nav.links a:hover, nav.links a:focus-visible { color: var(--wood-dark); border-color: var(--line); outline: none; }
-  nav.links a.active { color: var(--wood-dark); border-color: var(--ink); }
-  .nav-cta { background: var(--green-deep) !important; color: var(--paper) !important; border-color: var(--green-deep) !important; }
-  .nav-cta:hover { background: var(--green) !important; border-color: var(--green) !important; }
-
-  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: "Nunito", sans-serif; font-weight: 800; font-size: 0.95rem; padding: 14px 26px; border: 2px solid var(--ink); cursor: pointer; text-decoration: none; background: var(--clay); color: #FFF6EA; box-shadow: 5px 5px 0 var(--shadow-col); transition: transform 0.15s ease, box-shadow 0.15s ease; }
-  .btn:focus-visible { outline: 3px solid var(--clay); outline-offset: 2px; }
-  .btn:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--shadow-col); }
-  .btn-outline { background: var(--paper); color: var(--wood-dark); }
-  .btn-small { padding: 10px 18px; font-size: 0.85rem; box-shadow: 4px 4px 0 var(--shadow-col); }
-  .btn-small:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--shadow-col); }
-  .btn[disabled] { background: var(--line); color: var(--ink-soft); box-shadow: none; border-color: var(--line); cursor: default; }
-  .btn[disabled]:hover { transform: none; }
-
-  .hero { padding: 64px 0 90px; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
-  .eyebrow { font-weight: 800; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green-deep); margin-bottom: 14px; display: block; }
-  .hero h1 { font-size: clamp(2.6rem, 4.6vw, 3.8rem); font-weight: 600; line-height: 1.06; }
-  .hero h1 em { font-style: italic; font-weight: 500; color: var(--clay); }
-  .hero p.lede { margin: 22px 0 30px; font-size: 1.13rem; color: var(--ink-soft); max-width: 46ch; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-  .facet-frame { position: relative; aspect-ratio: 1 / 1; }
-  .facet-shape { position: absolute; inset: 0; width: 100%; height: 100%; background: linear-gradient(150deg, var(--wood-light), var(--wood) 55%, var(--wood-dark)); clip-path: polygon(14% 0%, 100% 0%, 100% 76%, 84% 100%, 0% 100%, 0% 20%); border: 2px solid var(--ink); }
-  .facet-frame .icon-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-  .facet-frame svg.piece { width: 44%; height: 44%; color: var(--paper); opacity: 0.95; }
-  .facet-tag { position: absolute; bottom: -16px; left: -16px; background: var(--green-deep); color: var(--paper); font-weight: 800; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 16px; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--shadow-col); }
-
-  section { padding: 90px 0; }
-  .section-head { max-width: 62ch; margin-bottom: 46px; }
-  .section-head h2 { font-size: clamp(1.9rem, 3vw, 2.5rem); font-weight: 600; }
-  .section-head p { color: var(--ink-soft); margin-top: 14px; font-size: 1.04rem; }
-  .kicker { font-weight: 800; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); display: block; margin-bottom: 12px; }
-
-  .about { background: var(--paper); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
-  .about .wrap { max-width: 1140px; padding-top: 64px; padding-bottom: 64px; }
-  .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start; }
-  .about-grid p { color: var(--ink-soft); font-size: 1.05rem; max-width: 52ch; }
-  .pillars { display: grid; gap: 16px; }
-  .pillar { display: flex; gap: 16px; align-items: flex-start; background: var(--ivory); padding: 22px 24px; border: 2px solid var(--line); }
-  .pillar .num { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.6rem; color: var(--wood-light); line-height: 1; }
-  .pillar h3 { font-size: 1.08rem; font-weight: 600; margin-bottom: 6px; }
-  .pillar p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
-
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-  .card { background: var(--paper); overflow: hidden; border: 2px solid var(--ink); display: flex; flex-direction: column; box-shadow: 6px 6px 0 var(--wood-light); transition: transform 0.18s ease, box-shadow 0.18s ease; }
-  .card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--wood-light); }
-  .card-media { position: relative; aspect-ratio: 4 / 3; background: linear-gradient(155deg, var(--wood-light), var(--wood)); display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--ink); }
-  .card-media svg.piece { width: 42%; height: 42%; color: var(--paper); opacity: 0.92; }
-  .placeholder-tag { position: absolute; bottom: 10px; left: 10px; background: var(--paper); color: var(--wood-dark); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 11px; border: 1px solid var(--ink); }
-  .status-badge { position: absolute; top: 10px; right: 10px; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 12px; color: #fff; border: 1px solid var(--ink); }
-  .status-available { background: var(--green-deep); }
-  .status-sold { background: var(--ink-soft); }
-  .card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-  .card-body h3 { font-size: 1.15rem; font-weight: 600; }
-  .price { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.2rem; color: var(--clay); white-space: nowrap; }
-  .card-body p.desc { color: var(--ink-soft); font-size: 0.94rem; margin: 0; flex: 1; }
-  .item-id { font-size: 0.72rem; color: var(--ink-soft); font-weight: 700; letter-spacing: 0.04em; }
-
-  .work-card .card-body { gap: 8px; }
-  .work-note { font-size: 0.82rem; color: var(--green-deep); font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
-
-  .contact-panel { background: var(--green-deep); color: #FBF6EA; border: 2px solid var(--ink); padding: 64px 56px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
-  .contact-panel h2 { color: #FBF6EA; font-size: clamp(1.8rem, 3vw, 2.3rem); }
-  .contact-panel p { color: #DDE5D6; font-size: 1.02rem; max-width: 44ch; margin-top: 14px; }
-  .contact-actions { display: flex; flex-direction: column; gap: 12px; }
-  .contact-row { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.25); padding: 16px 20px; }
-  .contact-row .ico { width: 38px; height: 38px; background: rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.3); }
-  .contact-row .ico svg { width: 18px; height: 18px; color: #FBF6EA; }
-  .contact-row a, .contact-row span.label { text-decoration: none; color: #FBF6EA; font-weight: 700; font-size: 0.98rem; }
-  .contact-row small { display: block; color: #C4D0BC; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
-
-  .page-header { padding: 56px 0 10px; }
-  .page-header .kicker { margin-bottom: 10px; }
-  .page-header h1 { font-size: clamp(2.1rem, 3.6vw, 2.9rem); font-weight: 600; }
-  .page-header p { color: var(--ink-soft); margin-top: 16px; font-size: 1.05rem; max-width: 60ch; }
-
-  footer { text-align: center; padding: 40px 20px 50px; color: var(--ink-soft); font-size: 0.86rem; border-top: 2px solid var(--line); margin-top: 30px; }
-  footer .wordmark-mini { font-family: "Fraunces", serif; font-weight: 700; color: var(--wood-dark); }
-
-  @media (max-width: 880px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .facet-frame { max-width: 340px; margin: 0 auto; }
-    .about-grid { grid-template-columns: 1fr; gap: 34px; }
-    .grid-3 { grid-template-columns: repeat(2, 1fr); }
-    .contact-panel { grid-template-columns: 1fr; padding: 44px 28px; }
-    nav.links a:not(.nav-cta) { display: none; }
-  }
-  @media (max-width: 560px) {
-    .wrap { padding: 0 18px; }
-    .grid-3 { grid-template-columns: 1fr; }
-    .hero { padding: 40px 0 60px; }
-    section { padding: 60px 0; }
-    .contact-panel { margin: 0; }
-  }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<canvas class="wood-bg" aria-hidden="true"></canvas>
+<div class="wood-veil" aria-hidden="true"></div>
+<div class="page">
 <header class="site">
-    <div class="nav-bar">
-      <a href="index.html" class="wordmark">PUIMEI <small>mööbel</small></a>
-      <nav class="links">
-        <a href="tehtud-tood.html">Tehtud tööd</a><a href="pood.html">Pood</a><a href="kontakt.html" class="nav-cta active">Kontakt</a>
-      </nav>
+    <div class="nav-pill">
+      <a class="wordmark" href="index.html"><b>PUIMEI</b><span class="mono">Mööbel</span></a>
+      <nav class="links"><a href="tehtud-tood.html">Tehtud tööd</a><a href="pood.html">Pood</a><a href="kontakt.html" class="nav-cta active">Kontakt</a></nav>
     </div>
   </header>
 <main>
 
-    <section class="page-header">
-      <div class="wrap">
-        <span class="kicker">Kontakt</span>
+    <section class="page-head">
+      <div class="wrap reveal">
+        <span class="kicker mono">Kontakt</span>
         <h1>Võta ühendust</h1>
-        <p>Leidsid endale meelepärase eseme või on lihtsalt küsimusi? Kirjuta otse või anna märku sotsiaalmeedias — vastan tavaliselt sama päeva jooksul.</p>
+        <p>Leidsid endale meelepärase eseme või on lihtsalt küsimusi? Kirjuta otse või anna
+        märku sotsiaalmeedias — vastan tavaliselt sama päeva jooksul.</p>
       </div>
     </section>
-    <section style="padding-top:10px;">
+    <section style="padding-top:22px;">
       <div class="wrap">
-        <div class="contact-panel">
+        <div class="slab contact-slab reveal">
           <div>
-            <span class="kicker" style="color:var(--wood-light);">Räägime</span>
+            <span class="kicker mono">Räägime</span>
             <h2>Mõtled millegi peale, mida siin ei näinud?</h2>
-            <p>Kirjuta julgelt igasugustest mööbliesemetest — kui see väärib teist elu, leiame sellele koha.</p>
+            <p>Kirjuta julgelt igasugustest mööbliesemetest — kui see väärib teist elu,
+            leiame sellele koha.</p>
           </div>
-          <div class="contact-actions">
-            <div class="contact-row">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="0"/></svg></span>
-              <div><small>E-post</small><a href="mailto:info@puimeimoobel.ee">info@puimeimoobel.ee</a></div>
-            </div>
-            <div class="contact-row">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="0"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></span>
-              <div><small>Instagram</small><a href="#">@puimei.moobel</a></div>
-            </div>
-            <div class="contact-row">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-              <div><small>Asukoht</small><span class="label">Eesti</span></div>
-            </div>
+          <div class="contact-rows">
+            <div class="contact-row"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></span>
+              <div><small>E-post</small><a href="mailto:info@puimeimoobel.ee">info@puimeimoobel.ee</a></div></div>
+            <div class="contact-row"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.7" fill="currentColor" stroke="none"/></svg></span>
+              <div><small>Instagram</small><a href="#">@puimei.moobel</a></div></div>
+            <div class="contact-row"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+              <div><small>Asukoht</small><span class="val">Eesti</span></div></div>
           </div>
         </div>
       </div>
@@ -222,8 +51,10 @@
 
 </main>
 <footer>
-    <span class="wordmark-mini">PUIMEI mööbel</span> — vana mööbel, uus elu.<br>
-    © 2026 PUIMEI mööbel. Kõik õigused kaitstud.
+    <b>PUIMEI mööbel</b> — vana mööbel, uus elu.<br>
+    © 2026 PUIMEI mööbel
   </footer>
+</div>
+<script src="wood.js"></script>
 </body>
 </html>
