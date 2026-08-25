@@ -27,9 +27,7 @@
     ctx.clearRect(0, 0, W, H);
 
     var small = W < 700;
-    /* finer grid on small screens too: knot rings sit at a smaller physical
-       radius there, so they need a tighter grid to render round, not faceted */
-    var step = small ? 5 : 6;
+    var step = small ? 8 : 6;
     var spacing = 34;
 
     var cols = Math.ceil(W / step) + 1;
@@ -43,8 +41,24 @@
        consistent across screen sizes. */
     var sizeScale = Math.max(0.6, Math.min(1.05, W / 1200));
 
+    /* a knot's innermost ring sits where the field is closest to its peak,
+       so it has the smallest radius. When amp lands just above a multiple of
+       spacing, that ring's radius shrinks toward zero — too few grid cells
+       cross it to read as round, so it renders as a triangle. Clamping amp
+       down to the nearest multiple of spacing drops that one degenerate
+       ring instead of drawing it badly. */
+    var minRingPx = step * 5;
     var knots = KNOTS.map(function (k) {
-      return { x: k.fx * W, y: k.fy * H, amp: k.amp * sizeScale, rx: k.rx * W, ry: k.ry * H };
+      var amp = k.amp * sizeScale;
+      var rx = k.rx * W, ry = k.ry * H;
+      var top = Math.floor(amp / spacing) * spacing;
+      var remainder = amp - top;
+      if (remainder > 0.001 && top > 0) {
+        var avgR = (rx + ry) / 2;
+        var ringRadius = avgR * Math.sqrt(-Math.log(1 - remainder / amp));
+        if (ringRadius < minRingPx) amp = top;
+      }
+      return { x: k.fx * W, y: k.fy * H, amp: amp, rx: rx, ry: ry };
     });
 
     var i, j, n;
