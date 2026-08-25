@@ -27,15 +27,24 @@
     ctx.clearRect(0, 0, W, H);
 
     var small = W < 700;
-    var step = small ? 10 : 7;
-    var spacing = small ? 30 : 34;
+    /* finer grid on small screens too: knot rings sit at a smaller physical
+       radius there, so they need a tighter grid to render round, not faceted */
+    var step = small ? 5 : 6;
+    var spacing = 34;
 
     var cols = Math.ceil(W / step) + 1;
     var rows = Math.ceil(H / step) + 1;
     var field = new Float32Array(cols * rows);
 
+    /* amp is a fixed field-height, but a knot's on-screen radius (rx/ry)
+       shrinks with the viewport — without this, the same height gets
+       squeezed into a smaller radius on narrow screens, so the rings crowd
+       together. Scaling amp down with the viewport keeps ring spacing
+       consistent across screen sizes. */
+    var sizeScale = Math.max(0.6, Math.min(1.05, W / 1200));
+
     var knots = KNOTS.map(function (k) {
-      return { x: k.fx * W, y: k.fy * H, amp: k.amp, rx: k.rx * W, ry: k.ry * H };
+      return { x: k.fx * W, y: k.fy * H, amp: k.amp * sizeScale, rx: k.rx * W, ry: k.ry * H };
     });
 
     var i, j, n;
